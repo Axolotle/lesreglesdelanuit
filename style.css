@@ -1,10 +1,10 @@
 :root {
     font-family: 'hack';
-    font-size: 0.9em;
+    font-size: 0.8em;
     color: black;
 }
 
-ol, ul {
+ol, ul, li {
 	list-style: none;
 }
 em {
@@ -26,41 +26,55 @@ em {
     background: black;
 }
 
+html {
+    background-color: black;
+}
+
 html, body {
     height: 100%;
     width: 100%;
-    background-color: black;
 }
-body {
-    display: flex;
-    justify-content: center;
-    align-items: center;
+
+@media (orientation: landscape) {
+    body {
+        display: flex;
+        justify-content: center;
+    }
 }
+@media (orientation: portrait) {
+
+}
+
 
 
 /*╭╮╮┌─╴╭╮╷╷ ╷
   │││├─╴││││ │
   ╵╵╵╰─╴╵╰╯╰─╯*/
 nav {
+    height: 100%;
+    width: 100%;
     color: white;
+    display: flex;
+    flex-direction: column;
+    justify-content: space-evenly;
+    align-items: center;
 }
 
 #logo {
     max-width: 15em;
     display: block;
-    margin: auto;
-    margin-bottom: 5em;
+    margin: 0 auto;
 }
 
 ul {
     font-size: 1.25rem;
-    max-width: 18em;
-    margin: 0em auto 8em auto;
+}
+ul li::before {
+    content: "→ ";
 }
 li {
-    display: inline-block;
     cursor: pointer;
-    padding: 0.1em 0.6em 0.1em 0.3em;
+    padding: 0.1em 0.6em;
 }
 li:hover {
     color: black;
@@ -68,26 +82,96 @@ li:hover {
     background-color: white;
 }
 
+@media (orientation: landscape) {
+    nav.after {
+        width: 50%;
+
+    }
+}
+@media (orientation: portrait) {
+    nav.after {
+        height: auto;
+    }
+    #logo {
+        margin-top: 3rem;
+    }
+    ul {
+        margin-top: 3rem;
+        margin-bottom: 2rem;
+    }
+
+}
+
 
 /*╭─╴╭─╮╭╮╷╶┬╴┌─╴╭╮╷╶┬╴
   │  │ ││││ │ ├─╴│││ │
   ╰─╴╰─╯╵╰╯ ╵ ╰─╴╵╰╯ ╵ */
 main {
-    background-color: white;
     color: black;
-    height: 100%;
-    display: none;
-    justify-content: center;
-    align-items: center;
 }
+main.after {
+    display: flex;
+}
+
 main img {
-    max-width: 50%;
+    max-width: 100%;
 }
+
 .content {
-    max-width: 45em;
-    padding: 5em;
     margin: auto;
     display: none;
+    max-width: 40rem;
+}
+main.after::before {
+    content: ' ';
+    border-radius: 50%;
+    background-color: white;
+    z-index: -1;
+}
+
+@media (orientation: landscape) {
+    main.after {
+        height: 100%;
+        overflow: scroll;
+        width: 50%;
+        padding: 0 5rem;
+    }
+    main.after::before {
+        position: fixed;
+        left: 42.5vmax;
+        top: -32.5vmax;
+        width: 140vmax;
+        height: 140vmax;
+    }
+
+    .content {
+        padding: 3rem 0;
+    }
+
+}
+@media (orientation: landscape) and (max-width: 800px) {
+    main.after::before {
+        top: -60vmax;
+        width: 200vmax;
+        height: 200vmax;
+    }
+}
+@media (orientation: portrait) {
+    main.after {
+        background-color: white;
+        overflow: scroll;
+        margin-top: 10rem;
+    }
+    main.after::before {
+        position: absolute;
+        left: -25vw;
+        margin-top: -5rem;
+        width: 150vw;
+        height: 20rem;
+    }
+    .content {
+        padding: 3rem;
+    }
 }
 
 h2 {
@@ -97,11 +181,11 @@ h2 {
     border-bottom: black solid 0.4em;
 }
 
-.participants {
-    margin-top: 0.7em;
-}
 p {
     margin-top: 1.3em;
+}
+.participants {
+    margin-top: 0.7em;
 }
 
 .participants a:link, .participants a:visited {
@@ -110,30 +194,6 @@ p {
 .participants a:hover, .participants a:active {
     color: black;
     background-color: white;
-}
-
-@media screen and (max-width: 800px), (max-height: 600px) {
-	body {
-        display: block;
-    }
-    nav {
-        height: auto;
-    }
-    #logo {
-        margin-bottom: 2em;
-        max-width: 10em;
-        padding-top: 4em;
-    }
-    ul {
-        max-width: 14em;
-        margin: 0em auto 2em auto;
-    }
-    li {
-        font-size: 0.8em;
-    }
-    .content {
-        padding: 3em;
-    }
 }
 
 

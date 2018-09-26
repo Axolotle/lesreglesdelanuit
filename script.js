@@ -1,29 +1,26 @@
-function showContent(a) {
-    var elem = content[Array.prototype.indexOf.call(targ, a.target)];
-
-    if (last === undefined) {
+function update(prevHash, nextHash) {
+    if (prevHash === undefined) {
         document.getElementsByTagName("MAIN")[0].classList.add("after");
         document.getElementsByTagName("NAV")[0].classList.add("after");
-    } else {
-        last.style.display = "none";
-    }
+    } else document.getElementById(prevHash).classList.remove("show");
 
-    elem.style.display = "block";
+    var elem = document.getElementById(nextHash);
+    elem.classList.add("show")
     if (elem.scrollIntoView === undefined) {
         window.scrollTo(0, document.getElementsByTagName("NAV")[0].offsetHeight);
     } else {
         elem.scrollIntoView({behavior: "smooth", block: "start"});
     }
-    last = elem;
 }
 
-var targ = document.getElementsByTagName("LI");
-var content = document.getElementsByClassName("content");
-var last;
 
-for (var i = 0; i < targ.length; i++) {
-    targ[i].addEventListener("click", showContent);
+function init() {
+    window.addEventListener('hashchange', function(e) {
+        update(e.oldURL.split("#")[1], e.newURL.split("#")[1])
+    }, false);
+
+    var hash = window.location.hash.substring(1);
+    if (hash !== "") update(undefined, hash);
 }
-document.getElementsByClassName("contact")[0].onclick = function () {
-    showContent({target: targ[targ.length - 1]})
-}
+
+window.onload = init;

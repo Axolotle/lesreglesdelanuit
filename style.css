@@ -1,5 +1,5 @@
 :root {
-    font-family: 'hack';
+    font-family: Hack, monospace;
     font-size: 0.8em;
     color: black;
 }
@@ -61,8 +61,10 @@ nav {
     align-items: center;
 }
 
-#logo {
+#logo img {
+    outline: none;
     max-width: 15em;
+    max-height: 15em;
     display: block;
     margin: 0 auto;
 }
@@ -70,17 +72,21 @@ nav {
 ul {
     font-size: 1.25rem;
 }
-ul li::before {
+ul a::before {
     content: "→ ";
 }
-li {
+nav li a {
     cursor: pointer;
     padding: 0.1em 0.6em;
+    width: 100%;
+    color: white;
+    text-decoration: none;
+    display: block;
 }
-li:hover {
+nav li a:hover {
     color: black;
-    font-weight: bold;
     background-color: white;
+    font-weight: bold;
 }
 
 @media (orientation: landscape) {
@@ -124,6 +130,9 @@ main.after::before {
     margin: auto;
     display: none;
     max-width: 40rem;
+}
+.show {
+    display: block;
 }
 
 
@@ -205,16 +214,16 @@ p.space {
     margin-top: 2rem;
 }
 
-a, a:link, a:visited {
+main a, main a:link, main a:visited {
     color: black;
     text-decoration: underline;
 }
-a:hover, a:active {
+main a:hover, main a:active {
     background-color: yellow;
     cursor: pointer;
 }
 
-.website a {
+main .website a {
     background-color: black;
     color: white;
     padding: 0.2rem 1rem;
@@ -230,31 +239,30 @@ a:hover, a:active {
 /*┌─╴╭─╮╭╮╷╶┬╴╭─╴
   ├─╴│ ││││ │ ╰─╮
   ╵  ╰─╯╵╰╯ ╵ ╶─╯*/
-@font-face {
-    font-family: 'hack';
-    src: url('fonts/hack-regular-webfont.woff') format('woff'),
-         url('fonts/hack-regular-webfont.ttf') format('truetype');
-    font-weight: normal;
+  @font-face {
+    font-family: 'Hack';
+    src: url('fonts/hack-regular-webfont.woff2?v=2.020') format('woff2'), url('fonts/hack-regular-webfont.woff?v=2.020') format('woff'), url('fonts/hack-regular-webfont.ttf?v=2.020') format('truetype');
+    font-weight: 400;
     font-style: normal;
-}
-@font-face {
-    font-family: 'hack';
-    src: url('fonts/hack-italic-webfont.woff') format('woff'),
-         url('fonts/hack-italic-webfont.ttf') format('truetype');
-    font-weight: normal;
-    font-style: italic;
-}
-@font-face {
-    font-family: 'hack';
-    src: url('fonts/hack-bold-webfont.woff') format('woff'),
-         url('fonts/hack-bold-webfont.ttf') format('truetype');
-    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Hack';
+    src: url('fonts/hack-bold-webfont.woff2?v=2.020') format('woff2'), url('fonts/hack-bold-webfont.woff?v=2.020') format('woff'), url('fonts/hack-bold-webfont.ttf?v=2.020') format('truetype');
+    font-weight: 700;
     font-style: normal;
-}
-@font-face {
-    font-family: 'hack';
-    src: url('fonts/hack-bolditalic-webfont.woff') format('woff'),
-         url('fonts/hack-bolditalic-webfont.ttf') format('truetype');
-    font-weight: bold;
+  }
+
+  @font-face {
+    font-family: 'Hack';
+    src: url('fonts/hack-italic-webfont.woff2?v=2.020') format('woff2'), url('fonts/hack-italic-webfont.woff?v=2.020') format('woff'), url('fonts/hack-italic-webfont.ttf?v=2.020') format('truetype');
+    font-weight: 400;
     font-style: italic;
-}
+  }
+
+  @font-face {
+    font-family: 'Hack';
+    src: url('fonts/hack-bolditalic-webfont.woff2?v=2.020') format('woff2'), url('fonts/hack-bolditalic-webfont.woff?v=2.020') format('woff'), url('fonts/hack-bolditalic-webfont.ttf?v=2.020') format('truetype');
+    font-weight: 700;
+    font-style: italic;
+  }
